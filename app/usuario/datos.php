@@ -37,7 +37,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body"> 
-                                <small class="text-muted">Link de Referido </small><h6><a href="https://backofficenework.herokuapp.com/registrar.php?ref=<?php echo $_SESSION['id'];?>">http://localhost/sisref/registrar.php?ref=<?php echo $_SESSION['id'];?></a></h6> 
+                                <small class="text-muted">Link de Referido </small><h6><a href="https://backofficenework.herokuapp.com/registrar.php?ref=<?php echo $_SESSION['id'];?>">https://backofficenework.herokuapp.com/registrar.php?ref=<?php echo $_SESSION['id'];?></a></h6> 
                                 <small class="text-muted">Correo </small><h6><?php echo $_SESSION['correo'];?></h6> 
                                 <small class="text-muted p-t-30 db">Telefono</small><h6><?php echo $_SESSION['telefono'];?></h6> 
                                 <small class="text-muted p-t-30 db">Pais</small> <h6><?php echo $_SESSION['pais'];?></h6>
