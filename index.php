@@ -49,11 +49,11 @@
                             <?php
                                  if ($_GET["errorusuario"]=="si"){
                              ?>
-                                 <div class="alert"><strong style="color:#B71C1C;"> Datos Incorrectos !</strong></div>
+                                 <div class="alert"><strong style="color:#B71C1C;"> Datos Incorrectos </strong></div>
                            <?php  
                                }elseif ($_GET["registro"]=="exitoso") {
                                 ?>
-                                   <br><div class="success"><strong style="color: #ffffff;margin-left: 80px;background-color: #5baf30;padding: 8px;border-radius: 3px;">¡Te has registrado con exitoso!</strong></div>
+                                   <br><div class="success"><strong style="color: #ffffff;margin-left: 80px;background-color: #5baf30;padding: 8px;border-radius: 3px;">Te has registrado con exitoso</strong></div>
                             <?php 
                                  }  
                              ?>

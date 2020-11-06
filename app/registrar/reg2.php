@@ -31,7 +31,7 @@
                     </div>
                      <div class="col-sm-6 col-xs-12">
                         <div class="card card-body">
-                            <h4 class="card-title" style="text-align: center;font-size: 22px;font-weight: 600;">Crear un nuevo referido en Nework</h4><br>
+                            <h4 class="card-title" style="text-align: center;font-size: 22px;font-weight: 600;">Crear cuenta como refer en NeWork</h4><br>
                     
                              <?php
                                  if ($_GET["errorusuario"]=="si"){

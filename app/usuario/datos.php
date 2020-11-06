@@ -37,7 +37,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body"> 
-                                <small class="text-muted">Link de Referido </small><h6><a href="https://backoffice.nework.com.co/registrar.php?ref=<?php echo $_SESSION['id'];?>">https://backoffice.nework.com.co/registrar.php?ref=<?php echo $_SESSION['id'];?></a></h6> 
+                                <small class="text-muted">Link de Referido </small><h6><a href="http://localhost/backofficenework/registrar.php?ref=<?php echo $_SESSION['id'];?>">http://localhost/backofficenework/registrar.php?ref=<?php echo $_SESSION['id'];?></a></h6> 
                                 <small class="text-muted">Correo </small><h6><?php echo $_SESSION['correo'];?></h6> 
                                 <small class="text-muted p-t-30 db">Telefono</small><h6><?php echo $_SESSION['telefono'];?></h6> 
                                 <small class="text-muted p-t-30 db">Pais</small> <h6><?php echo $_SESSION['pais'];?></h6>
@@ -45,9 +45,11 @@
                                
                             </div>
                         </div>
+                    
                     </div>
                     <!-- Column -->
                     <!-- Column -->
+                
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                              <div class="card-body">
@@ -91,14 +93,18 @@
                                                     <input type="password" value="password" class="form-control form-control-line">
                                                 </div>
                                             </div>
-                                            
-                                            <div class="form-group">
-                                                <label class="col-md-12">Direccion completa</label>
-                                                <div class="col-md-12">
-                                                    <textarea rows="5" class="form-control form-control-line"></textarea>
-                                                </div>
-                                            </div>
-                                           
+                                             <div class="form-group">
+                                    <label>Documento de identidad</label><br><br>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Subir</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Suba una foto en formato PNG o JPG</label>
+                                        </div>
+                                    </div>
+                                </div>
                                             
                                         </form>
                                         <div class="form-group">

@@ -87,7 +87,29 @@
 <style type="text/css">
 .topbar .navbar-collapse {
     padding: 0;
+    background: #e4bc15 !important;
+
+}
+.left-sidebar {
+    
     background: #000 !important;
+    
+}
+.topbar .top-navbar .navbar-header {
+    background: #000 !important;
+}
+a:hover {
+    color: #e4bc15 !important;
+}
+.sidebar-nav>ul>li.active>a {
+    color: #e4bc15 !important;
+    
+}
+.sidebar-nav ul li a.active i, .sidebar-nav ul li a:hover i {
+    color: #e4bc15 !important;
+}
+navbar-dark .navbar-nav .nav-link {
+    color: #000 !important;
 }
 </style>
 </head>
@@ -119,14 +141,14 @@
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="assets/images/icon.png" alt="homepage" class="dark-logo" style="width: 40px;"/>
+                            <img src="assets/images/iconnuevo.jpg" alt="homepage" class="dark-logo" style="width: 40px;"/>
                             <!-- Light Logo icon -->
                             <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text --><span>
                          <!-- dark Logo text -->
-                         <img src="assets/images/nework-logo.png" alt="homepage" class="dark-logo" style="width: 160px;margin-left: -10px;margin-top: 6px;
+                         <img src="assets/images/logonegro.jpg" alt="homepage" class="dark-logo" style="width: 160px;margin-left: -10px;margin-top: 6px;
 "/>
                          <!-- Light Logo text -->    
                          <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span>
