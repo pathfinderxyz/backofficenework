@@ -108,7 +108,7 @@ a:hover {
 .sidebar-nav ul li a.active i, .sidebar-nav ul li a:hover i {
     color: #e4bc15 !important;
 }
-navbar-dark .navbar-nav .nav-link {
+.navbar-dark .navbar-nav .nav-link {
     color: #000 !important;
 }
 </style>
