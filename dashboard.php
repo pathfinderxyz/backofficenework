@@ -111,6 +111,9 @@ a:hover {
 .navbar-dark .navbar-nav .nav-link {
     color: #000 !important;
 }
+a.link {
+    color: #ffffff !important;
+}
 </style>
 </head>
 
