@@ -31,7 +31,7 @@
                         
                          <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Incetivos Activos</h4>
+                                <h4 class="card-title">Incentivos Activos</h4>
                                 <h6 class="card-subtitle">Estos son las promociones que se encuentran activas</h6>
                               
                                 <div class="table-responsive m-t-40">

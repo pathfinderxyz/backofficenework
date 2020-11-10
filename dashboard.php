@@ -415,10 +415,10 @@ a.link {
                             </a>
                              <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="?page=newincentivo">Añadir incetivos</a>
+                                    <a href="?page=newincentivo">Añadir incentivos</a>
                                 </li>
                                 <li>
-                                    <a href="?page=verpromo">Ver incetivos</a>
+                                    <a href="?page=verpromo">Ver incentivos</a>
                                 </li>
                             </ul>
                         </li>';
