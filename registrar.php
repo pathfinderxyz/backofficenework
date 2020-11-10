@@ -26,7 +26,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon.png">
     <title>Registrar | Nework</title>
     
     <!-- page css -->
@@ -34,13 +34,28 @@
     <!-- Custom CSS -->
     <link href="dist/css/style.min.css" rel="stylesheet">
     
-    
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script type="text/javascript">
+$(document).ready(function() {  
+    $('#correo').on('blur', function(){
+        $('#result-correo').html('<img src="assets/images/loader.gif" />').fadeOut(1000);
+
+        var correo = $(this).val();       
+        var dataString = 'correo='+correo;
+
+        $.ajax({
+            type: "POST",
+            url: "check_email.php",
+            data: dataString,
+            success: function(data) {
+                $('#result-correo').fadeIn(1000).html(data);
+            }
+        });
+    });              
+});    
+</script>
 <style type="text/css">
     .card-subtitle{
        font-weight: 500 !important;
@@ -70,8 +85,8 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <br><br><section id="wrapper">
-        <div style="background-image:url(assets/images/background/login-register.jpg);">
+   <section id="wrapper">
+        <div style="background-image:url(assets/images/background/login-register.jpg);"><br><br>
                 <div class="row">
                     <div class="col-sm-3 col-xs-12">
                     </div>
@@ -92,19 +107,17 @@
                                 <div class="col-sm-12 col-xs-12">
                                     <form action="app/registrar/reg.php" method="post">
                                         <div class="form-group">
-                                            
                                             <input type="text" class="form-control" name="patrocinador" value="<?php echo $patro ?>"id="patrocinador" placeholder="patrocinador" required="" >
                                         </div>
                                         <h5 class="card-subtitle"> Inicio de sesion</h5>
+                                        
                                         <div class="form-group">
                                          <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Nombre de usuario" required="">
                                         </div>
                                         <div class="form-group">
-                                            
                                             <input type="password" class="form-control" name="pass" id="pass" placeholder="Contraseña" required="">
                                         </div>
                                         <div class="form-group">
-                                            
                                             <input type="password" class="form-control"  id="pass2" placeholder="Repetir Contraseña" required="">
                                         </div>
                                         <h5 class="card-subtitle"> Datos Personales</h5>
@@ -114,30 +127,35 @@
                                         <div class="form-group">
                                          <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" required="">
                                         </div>
+                                         <div id="result-correo"></div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" required="">
+                                        </div>
                                         <div class="form-group">
                                          <input type="tel" class="form-control" name="tel" id="tel" placeholder="Telefono" required="">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="pais" id="pais" placeholder="Pais" required="">
                                         </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" required="">
-                                        </div>
+                                       
                                         <h5 class="card-subtitle">Informacion de Pago</h5>
                                         <div class="form-group">
-                                         <input type="email" class="form-control" id="exampleInputEmail12" placeholder="Envia exactamente esta cantidad: $28.54">
-                                        </div>
-                                        <div class="form-group">
-                                         <input type="email" class="form-control" id="exampleInputEmail12" placeholder="Direccion de Payu: pagos@nework.com.co ">
+                                         <h6>Envia exactamente esta cantidad: $28.54"</h6>
+                                         <h6><strong>Direccion de Payu:</strong> pagos@nework.com.co</h6>
                                         </div>
                                         <div class="form-group">
                                          <input type="hidden" name="idrefpadre" value="<?php echo $idrefpadre ?>">
                                         </div>
-                                        
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox mr-sm-2">
                                                 <input type="checkbox" class="custom-control-input" id="checkbox1" value="check" required="">
-                                                <label class="custom-control-label" for="checkbox1">Aceptas nuestros <a href="#"> terminos y condiciones</a></label>
+                                                <label class="custom-control-label" for="checkbox1">Aceptas los <a href="extras/terminos.html" target="_blank"> terminos y condiciones</a></label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox mr-sm-2">
+                                                <input type="checkbox" class="custom-control-input" id="checkbox2" value="check2" required="">
+                                                <label class="custom-control-label" for="checkbox2">Aceptas nuestras<a href="extras/politicas.html" target="_blank"> Politicas de privacidad</a></label>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-success mr-2">Crear cuenta</button>

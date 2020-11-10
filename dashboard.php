@@ -1,29 +1,29 @@
 <?php 
-    session_start();
-
-    $id=$_GET['id'];
-        
-    error_reporting(0);
-        
     include "login/seguridad.php";
     //include "Errores/mostrar_errores.php";
     include "coneccion/coneccion.php"; 
+   
+    error_reporting(0);
+    $id=$_GET['id'];    
+    $date= date ("Y-m-d");
+    
 
     $sql = pg_query("select * from usuarios where id='$id'");
     $row = pg_num_rows($sql);
     if ($row) {
         $info = pg_fetch_assoc($sql);
+        $_SESSION['id']=$info['id'];
         $_SESSION['usuario'] = $info['usuario'];
         $_SESSION['rol'] = $info['rol'];
-        $_SESSION['id']=$info['id'];
         $_SESSION['nombre']=$info['nombre'];
         $_SESSION['apellido']=$info['apellido'];
         $_SESSION['fecha']=$info['fecha'];
         $_SESSION['correo']=$info['correo'];
         $_SESSION['telefono']=$info['telefono'];
         $_SESSION['pais']=$info['pais'];
-         $_SESSION['patrocinador']=$info['patrocinador'];
-         $_SESSION['id_refer_padre']=$info['id_refer_padre'];
+        $_SESSION['patrocinador']=$info['patrocinador'];
+        $_SESSION['id_refer_padre']=$info['id_refer_padre'];
+        $_SESSION['statu_pin']=$info['statu_pin'];
         
     }
     
@@ -46,6 +46,16 @@
                 $file = 'registrar/ver_refer.php';   
             }elseif ($_GET['page'] == 'datos') {
                 $file = 'usuario/datos.php';   
+            }elseif ($_GET['page'] == 'referderefer') {
+                $file = 'registrar/referderefer.php';   
+            }elseif ($_GET['page'] == 'referx3') {
+                $file = 'registrar/referx3.php';   
+            }elseif ($_GET['page'] == 'pagopin') {
+                $file = 'pin/pago_pin.php';   
+            }elseif ($_GET['page'] == 'newincentivo') {
+                $file = 'promociones/nuevapromocion.php';   
+            }elseif ($_GET['page'] == 'verpromo') {
+                $file = 'promociones/ver_promo.php';   
             }
         }else{
             $file = 'inicio.php';  
@@ -192,21 +202,28 @@ a.link {
                                     <li>
                                         <div class="message-center">
                                             <!-- Message -->
-                                            <a href="javascript:void(0)">
-                                                <div class="btn btn-danger btn-circle"><i class="fa fa-link"></i></div>
+                                           <?php  
+                                             if ($_SESSION['statu_pin'] != 'activado') {
+                                               echo  '<a href="?page=pagopin">
+                                                <div class="btn btn-danger btn-circle"><i class="icon-link"></i></div>
                                                 <div class="mail-contnet">
-                                                    <h5>Pagar Pin</h5> <span class="mail-desc">Recuerde pagar su pin</span> <span class="time">9:30 AM</span> </div>
-                                            </a>
+                                                    <h5>Paga tu pin</h5> <span class="mail-desc">Recuerde pagar su pin</span>  </div>
+                                            </a>';}?>
                                             <!-- Message -->
-                                              <a href="javascript:void(0)">
+                                            <?php  
+                                            $sqlnewref = pg_query("SELECT * FROM usuarios where id_refer_padre = '".$_SESSION['id']."' and fecha = '$date'");
+                                            $rownewref = pg_num_rows($sqlnewref);
+                                             if ($rownewref) {
+                                               echo  '
+                                              <a href="?page=referderefer">
                                                 <div class="btn btn-primary btn-circle"><i class="ti-user"></i></div>
                                                 <div class="mail-contnet">
-                                                    <h5>Nuevo referido</h5> <span class="mail-desc">Tienes un nuevo referido</span> <span class="time">9:02 AM</span> </div>
-                                            </a>
-                                            <a href="javascript:void(0)">
-                                                <div class="btn btn-success btn-circle"><i class="ti-calendar"></i></div>
+                                                    <h5>Nuevo referido</h5> <span class="mail-desc">Tienes un nuevo referido hoy</span></div>
+                                            </a>';}?>
+                                            <a href="?page=aula">
+                                                <div class="btn btn-info btn-circle"><i class="icon-control-play"></i></div>
                                                 <div class="mail-contnet">
-                                                    <h5>Nuevos eventos</h5> <span class="mail-desc">Hay nueva promocion para ti!</span> <span class="time">9:10 AM</span> </div>
+                                                    <h5>Tienes un video</h5> <span class="mail-desc">Ve al aula</span> </div>
                                             </a>
                                             <!-- Message -->
                                            
@@ -235,7 +252,7 @@ a.link {
                         <!-- ============================================================== -->
                         <!-- End mega menu -->
                         <!-- ============================================================== -->
-                        <li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
+                        
                     </ul>
                 </div>
             </nav>
@@ -261,23 +278,22 @@ a.link {
                                 <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu animated flipInY">
+                                <a href="?page=home" class="dropdown-item">
+                                    <i class="icon-home"></i> Inicio</a>
                                 <!-- text-->
                                 <a href="?page=datos" class="dropdown-item">
                                     <i class="ti-user"></i> Mi perfil</a>
                                 <!-- text-->
-                                <a href="javascript:void(0)" class="dropdown-item">
+                                <a href="?page=pagopin" class="dropdown-item">
                                     <i class="ti-wallet"></i> Pagar Pin</a>
                                 <!-- text-->
-                                <a href="javascript:void(0)" class="dropdown-item">
-                                    <i class="ti-email"></i> Notificaciones</a>
+                                <a href="login/logout.php" class="dropdown-item">
+                                    <i class="icon-logout"></i> Salir</a>
                                 <!-- text-->
-                                <div class="dropdown-divider"></div>
+                               
+                               
                                 <!-- text-->
                                 
-                                <div class="dropdown-divider"></div>
-                                <!-- text-->
-                                <a href="index.php" class="dropdown-item">
-                                    <i class="fa fa-power-off"></i> Salir</a>
                                 <!-- text-->
                             </div>
                         </div>
@@ -299,16 +315,33 @@ a.link {
                                 <li>
                                     <a href="?page=reg2">Agregar referido</a>
                                 </li>
+                                <?php  
+                                  if ($_SESSION['rol'] != 'admin') {
+                                     echo '
                                 <li>
-                                    <a href="?page=listadorefer">Listado de referidos</a>
+                                    <a href="?page=referderefer">Listado de referidos</a>
                                 </li>
+                                ';
+                                         }
+                                 ?>
                               
                             </ul>
                         </li><?php  
                                   if ($_SESSION['rol'] == 'admin') {
                                      echo '
                       <li>
-                            <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                            <a class="waves-effect waves-dark" href="?page=listadorefer" aria-expanded="false">
+                               <i class="icon-people"></i>
+                                <span class="hide-menu">Todos los referidos</span>
+                            </a>
+                        </li>';
+                                         }
+                                 ?>
+                                 <?php  
+                                  if ($_SESSION['rol'] != 'admin') {
+                                     echo '
+                      <li>
+                            <a class="waves-effect waves-dark" href="?page=referx3" aria-expanded="false">
                                <i class="icon-people"></i>
                                 <span class="hide-menu">Red de referidos</span>
                             </a>
@@ -378,14 +411,14 @@ a.link {
                           <li>
                             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                 <i class="icon-settings"></i>
-                                <span class="hide-menu">Cambios</span>
+                                <span class="hide-menu">Datos e incentivos</span>
                             </a>
                              <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="#">Costo del pin</a>
+                                    <a href="?page=newincentivo">Añadir incetivos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Accesos</a>
+                                    <a href="?page=verpromo">Ver incetivos</a>
                                 </li>
                             </ul>
                         </li>';
@@ -393,7 +426,7 @@ a.link {
                                  ?>
                     
                         <li>
-                            <a class="waves-effect waves-dark" href="index.php" aria-expanded="false">
+                            <a class="waves-effect waves-dark" href="login/logout.php" aria-expanded="false">
                                 <i class="icon-logout"></i>
                                 <span class="hide-menu">Salir</span>
                             </a>
@@ -475,12 +508,70 @@ a.link {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+   
+  
     <!-- end - This is for export functionality only -->
     <script>
         $(function () {
             $('#myTable').DataTable();
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function (group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+              $('#myTable2').DataTable();
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function (group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+            $('#myTable3').DataTable();
             var table = $('#example').DataTable({
                 "columnDefs": [{
                     "visible": false,
@@ -529,6 +620,26 @@ a.link {
         });
 
     </script>
+
+   <script type="text/javascript">
+$(document).ready(function() {  
+    $('#correo').on('blur', function(){
+        $('#result-correo').html('<img src="assets/images/loader.gif" />').fadeOut(1000);
+
+        var correo = $(this).val();       
+        var dataString = 'correo='+correo;
+
+        $.ajax({
+            type: "POST",
+            url: "check_email.php",
+            data: dataString,
+            success: function(data) {
+                $('#result-correo').fadeIn(1000).html(data);
+            }
+        });
+    });              
+});    
+</script>
     
 </body>
 

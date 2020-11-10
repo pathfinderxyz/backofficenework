@@ -24,8 +24,8 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <br><br><section id="wrapper">
-        <div style="background-image:url(assets/images/background/login-register.jpg);">
+   <section id="wrapper">
+        <div style="background-image:url(assets/images/background/login-register.jpg);"><br><br>
                 <div class="row">
                     <div class="col-sm-3 col-xs-12">
                     </div>
@@ -72,22 +72,23 @@
                                         <div class="form-group">
                                          <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" required="">
                                         </div>
+                                         <div id="result-correo"></div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" required="">
+                                        </div>
                                         <div class="form-group">
                                          <input type="tel" class="form-control" name="tel" id="tel" placeholder="Telefono" required="">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="pais" id="pais" placeholder="Pais" required="">
                                         </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" required="">
-                                        </div>
+                                       
                                         <h5 class="card-subtitle">Informacion de Pago</h5>
                                         <div class="form-group">
-                                         <input type="email" class="form-control" id="exampleInputEmail12" placeholder="Envia exactamente esta cantidad: $28.54">
+                                         <h6>Envia exactamente esta cantidad: $28.54"</h6>
+                                         <h6><strong>Direccion de Payu:</strong> pagos@nework.com.co</h6>
                                         </div>
-                                        <div class="form-group">
-                                         <input type="email" class="form-control" id="exampleInputEmail12" placeholder="Direccion de Payu: pagos@nework.com.co ">
-                                        </div>
+                                        
                                         <div class="form-group">
                                          <input type="hidden" name="idrefpadre" value="<?php echo $miid ?>">
                                         </div>
@@ -95,7 +96,13 @@
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox mr-sm-2">
                                                 <input type="checkbox" class="custom-control-input" id="checkbox1" value="check" required="">
-                                                <label class="custom-control-label" for="checkbox1">Aceptas nuestros <a href="#"> terminos y condiciones</a></label>
+                                                <label class="custom-control-label" for="checkbox1">Aceptas los <a href="extras/terminos.html" target="_blank"> terminos y condiciones</a></label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox mr-sm-2">
+                                                <input type="checkbox" class="custom-control-input" id="checkbox2" value="check2" required="">
+                                                <label class="custom-control-label" for="checkbox2">Aceptas nuestras<a href="extras/politicas.html" target="_blank"> Politicas de privacidad</a></label>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-success mr-2">Crear cuenta</button>

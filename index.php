@@ -93,7 +93,7 @@
                         
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
-                                ¿No tienes una cuenta? <a href="registrar.php" class="text-info m-l-5"><b>Regístrate</b></a>
+                                ¿No tienes una cuenta? <a href="app/registrar/rsp.php" class="text-info m-l-5"><b>Regístrate</b></a>
                             </div>
                         </div>
                     </form>
@@ -146,6 +146,13 @@
             $("#recoverform").fadeIn();
         });
     </script>
+         <?php
+             session_start();
+             if ($_SESSION["autenticado"] == "SI") {
+             session_destroy();
+             exit();
+             }
+         ?>
     
 </body>
 

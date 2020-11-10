@@ -1,15 +1,55 @@
+  <?php 
+     $idstatus=  $_SESSION['id'];
+
+    $sql = pg_query("SELECT * from usuarios where id='$idstatus'");
+    $row = pg_num_rows($sql);
+    if ($row) {
+        $info = pg_fetch_assoc($sql);
+        
+         $status_actual=$info['statu_pin'];
+        
+    }
+     if ($status_actual=="activado"){
+           $color= 'text-success';
+         }else {
+           $color= 'text-danger';
+           
+       }  
+     
+     $consulta = pg_query("SELECT MAX(id_promo) AS id_promo FROM incentivos");
+     $infoconsulta = pg_fetch_assoc($consulta);
+     $idpromo = $infoconsulta['id_promo'];
+     $idpromo2 = $idpromo - 1 ;
+
+     $promo1 = pg_query("SELECT * from incentivos where id_promo='$idpromo'");
+     $infopromo1 = pg_fetch_assoc($promo1);
+     $titulop1 = $infopromo1['titulo'];
+     $descripcion1 = $infopromo1['descripcion'];
+     $imagen1 = $infopromo1['url_imagen'];
+
+     $promo2 = pg_query("SELECT * from incentivos where id_promo='$idpromo2'");
+     $infopromo2 = pg_fetch_assoc($promo2);
+     $titulop2 = $infopromo2['titulo'];
+     $descripcion2 = $infopromo2['descripcion'];
+     $imagen2 = $infopromo2['url_imagen'];
+
+
+
+?>
   <div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                       <strong><h4 class="text-themecolor">Bienvenido <?php  echo $_SESSION['nombre'];?></h4></strong> 
+                       <strong><h4 class="text-themecolor">Bienvenido <?php  echo ucfirst($_SESSION['nombre']);?></h4></strong> 
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item active"><h4><strong>Inactivo</strong></h4></li>
+                                <li class="breadcrumb-item active">
+                                  <h4><span class="<?php  echo $color;?>" style="font-weight: 600;"> <?php  echo ucfirst($status_actual) ;?></span></h4>
+                                </li>
                             </ol>
                             <?php  
                                   if ($_SESSION['rol'] == 'admin') {
@@ -76,21 +116,32 @@
                             <!-- column -->
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="news-slide m-b-15">
-                            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                                <!-- Carousel items -->
-                                <div class="carousel-inner">
-                                    <div class="active carousel-item">
-                                        <div class="overlaybg"><img src="assets/images/news/slide1.jpg" class="img-fluid" /></div>
-                                        <div class="news-content carousel-caption"><span class="label label-danger label-rounded">Promocion</span><br><br>
-                                            <h4>Este es un espacio publicitario por favor siga el link Aqui</h4> <a href="javascript:void(0)">Leer Mas</a></div>
+                   <div class="col-lg-3 col-md-6">
+                                <!-- Card -->
+                                <div class="card">
+                                    <img class="card-img-top img-responsive" src="<?php  echo $imagen1;?>" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><?php  echo $titulop1;?></h4>
+                                        <p class="card-text"><?php  echo  $descripcion1;?></p>
+                                        
                                     </div>
-                                    
                                 </div>
+                                <!-- Card -->
                             </div>
-                        </div>
-                    </div>
+                            <!-- column -->
+                            <!-- column -->
+                            <div class="col-lg-3 col-md-6">
+                                <!-- Card -->
+                                <div class="card">
+                                    <img class="card-img-top img-responsive" src="<?php  echo $imagen2;?>" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><?php  echo $titulop2;?></h4>
+                                        <p class="card-text"><?php  echo  $descripcion2;?>.</p>
+                                        
+                                    </div>
+                                </div>
+                                <!-- Card -->
+                            </div>
                 </div>
                 <!-- ============================================================== -->
                  <div class="row">

@@ -15,7 +15,7 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Listado de Referidos</h4>
+                        <h4 class="text-themecolor">Todos los Referidos</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
@@ -36,10 +36,10 @@
                         
                          <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Clientes Directos</h4>
-                                <h6 class="card-subtitle">Estos son todos tus clientes registrados</h6>
+                                <h4 class="card-title">Todos los Referidos</h4>
+                                <h6 class="card-subtitle">Estos son todos los clientes registrados</h6>
                                 <div class="table-responsive m-t-40">
-                                    <table id="myTable" class="table table-bordered table-striped">
+                                    <table id="myTable3" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
                                                 <th>Codigo</th>
@@ -83,5 +83,32 @@
                 </div>
                 
      </div>
-           
- 
+    <script type="text/javascript">
+       $('#myTable3').DataTable();
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function (group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+    </script>       
+   

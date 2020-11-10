@@ -24,20 +24,23 @@
                
                 <!-- Row -->
                 <div class="row">
-                    <!-- Column -->
+                
                     <div class="col-lg-4 col-xlg-3 col-md-5">
-                        <div class="card"> <img class="card-img" src="assets/images/background/socialbg.jpg" height="300" alt="Card image">
-                            <div class="card-img-overlay card-inverse text-white social-profile d-flex justify-content-center">
-                                <div class="align-self-center"> <img src="assets/images/users/1.png" class="img-circle" width="100">
-                                    <h4 class="card-title"><?php  echo $_SESSION['nombre'];?> <?php  echo $_SESSION['apellido'];?></h4>
-                                    <h6 class="card-subtitle"><?php  echo $_SESSION['usuario'];?></h6>
-                                    <p class="text-white">Miembro desde <?php echo $_SESSION['fecha'];?></p>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30"> <img src="assets/images/users/1.png" class="img-circle" width="150" />
+                                        <h4 class="card-title"><?php  echo $_SESSION['nombre'];?> <?php  echo $_SESSION['apellido'];?></h4>
+                                    <h6 class="card-subtitle"><?php  echo $_SESSION['usuario'];?></h6>
+                                    <p class="text-dark">Miembro desde <?php echo $_SESSION['fecha'];?></p>
+                                   
+                                </center>
+                            </div>
+                            <div>
+                                <hr> </div>
+                            <div class="card">
                             <div class="card-body"> 
-                                <small class="text-muted">Link de Referido </small><h6><a href="http://localhost/backofficenework/registrar.php?ref=<?php echo $_SESSION['id'];?>">http://localhost/backofficenework/registrar.php?ref=<?php echo $_SESSION['id'];?></a></h6> 
+                                <small class="text-muted">Link de Referido </small><h6><a href="http://localhost/backofficenework/registrar.php?ref=<?php echo $_SESSION['id'];?>">http://localhost/backofficenework/registrar.php?ref=<?php echo $_SESSION['id'];?></a></h6>
+                                 <small class="text-muted">Status </small><h6><?php echo ucfirst($_SESSION['statu_pin']);?></h6>  
                                 <small class="text-muted">Correo </small><h6><?php echo $_SESSION['correo'];?></h6> 
                                 <small class="text-muted p-t-30 db">Telefono</small><h6><?php echo $_SESSION['telefono'];?></h6> 
                                 <small class="text-muted p-t-30 db">Pais</small> <h6><?php echo $_SESSION['pais'];?></h6>
@@ -45,7 +48,7 @@
                                
                             </div>
                         </div>
-                    
+                        </div>
                     </div>
                     <!-- Column -->
                     <!-- Column -->
@@ -94,7 +97,7 @@
                                                 </div>
                                             </div>
                                              <div class="form-group">
-                                    <label>Documento de identidad</label><br><br>
+                                    <label>Cedula</label><br><br>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Subir</span>
