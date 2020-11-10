@@ -17,9 +17,5 @@
 
       move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
 
-       if ($sql) {
-       header('Location: ../../dashboard.php?page=newincentivo');//Se guardo
-       }else {
-       echo  'La imagen tiene un error o formato no compatible !';
-       }
+       echo $directorio;
 ?>
