@@ -6,7 +6,7 @@
      $descripcion = $_POST['descripcion'];
 
      // Recibo los datos de la imagen (ruta y nombre)
-      $directorio = $_SERVER['DOCUMENT_ROOT'].'/backofficenework/assets/img/';
+      $directorio = $_SERVER['DOCUMENT_ROOT'].'/assets/img/';
       $ruta = $_FILES['imagen']['tmp_name'];
       $nombre_img = $_FILES['imagen']['name'];
       $ruta_real= 'assets/img/';
