@@ -39,7 +39,7 @@
                                 <hr> </div>
                             <div class="card">
                             <div class="card-body"> 
-                                <small class="text-muted">Link de Referido </small><h6><a href="http://localhost/backofficenework/registrar.php?ref=<?php echo $_SESSION['id'];?>">http://localhost/backofficenework/registrar.php?ref=<?php echo $_SESSION['id'];?></a></h6>
+                                <small class="text-muted">Link de Referido </small><h6><a href="https://backoffice.nework.com.co/registrar.php?ref=<?php echo $_SESSION['id'];?>">https://backoffice.nework.com.co/registrar.php?ref=<?php echo $_SESSION['id'];?></a></h6>
                                  <small class="text-muted">Status </small><h6><?php echo ucfirst($_SESSION['statu_pin']);?></h6>  
                                 <small class="text-muted">Correo </small><h6><?php echo $_SESSION['correo'];?></h6> 
                                 <small class="text-muted p-t-30 db">Telefono</small><h6><?php echo $_SESSION['telefono'];?></h6> 

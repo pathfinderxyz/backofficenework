@@ -15,13 +15,13 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Incetivos</h4>
+                        <h4 class="text-themecolor">Incentivos</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             
                             <a href="?page=newincentivo"><button type="button" class="btn btn-warning d-none d-lg-block m-l-15">
-                                <i class="icon-plus"></i> Agregar incetivo</button></a>
+                                <i class="icon-plus"></i> Agregar incentivo</button></a>
                         </div>
                     </div>
                 </div>

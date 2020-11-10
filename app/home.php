@@ -19,7 +19,7 @@
      $consulta = pg_query("SELECT MAX(id_promo) AS id_promo FROM incentivos");
      $infoconsulta = pg_fetch_assoc($consulta);
      $idpromo = $infoconsulta['id_promo'];
-     $idpromo2 = $idpromo - 1 ;
+     $idpromo2 = 49 ;
 
      $promo1 = pg_query("SELECT * from incentivos where id_promo='$idpromo'");
      $infopromo1 = pg_fetch_assoc($promo1);
