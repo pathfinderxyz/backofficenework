@@ -51,7 +51,7 @@
                                     <form action="app/registrar/reg22.php" method="post">
                                         <div class="form-group">
                                             
-                                            <input type="text" class="form-control" value="<?php echo $patro ?>" name="patrocinador" id="patrocinador" placeholder="patrocinador" required="" >
+                                            <p> <?php echo $patro ?></p>
                                         </div>
                                         <h5 class="card-subtitle"> Inicio de sesion</h5>
                                         <div class="form-group">
