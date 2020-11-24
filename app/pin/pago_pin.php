@@ -52,6 +52,7 @@
                                 ?>
                         
                                 <a href="https://biz.payulatam.com/B0d22a111E5F010"><img src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"></a>
+                                
                             </div>
                         </div>
                     </div>
