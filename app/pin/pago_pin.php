@@ -37,7 +37,7 @@
                             <div class="card-header bg-warning">
                                 <h4 class="m-b-0 text-white">Pin Refer (Payu)</h4></div>
                             <div class="card-body">
-                                <h3 class="card-title">Pin $40</h3>
+                                <h3 class="card-title">Costo: USD 40</h3>
                                 <p class="card-text">Con el pago de pin podras darte de alta y disfrutar de todos nuestros beneficios como:</p>
                                  <h6 class="card-title">* Registro de clientes</h6>
                                  <h6 class="card-title">* Cobro de comisiones</h6>
@@ -61,7 +61,7 @@
                             <div class="card-header bg-dark">
                                 <h4 class="m-b-0 text-white">Pin Refer (BTC)</h4></div>
                             <div class="card-body">
-                                <h3 class="card-title">Precio $40</h3>
+                                <h3 class="card-title">Costo: USD 40</h3>
                                 <p class="card-text">Con el pago de pin podras darte de alta y disfrutar de todos nuestros beneficios como:</p>
                                  <h6 class="card-title">* Registro de clientes</h6>
                                  <h6 class="card-title">* Cobro de comisiones</h6>

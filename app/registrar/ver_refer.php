@@ -42,14 +42,14 @@
                                     <table id="myTable3" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
-                                                <th>Codigo</th>
-                                                <th>Nombre</th>
-                                                <th>Creado el</th>
-                                                <th>Linea</th>
-                                                <th>Status</th>
-                                                <th>Banco</th>
-                                                <th>Valor</th>
-                                                <th>Estado comision</th>
+                                                <th>Usuario</th>
+                                                <th>Nombre y Apellido</th>
+                                                <th>Cedula</th>
+                                                <th>Telefono</th>
+                                                <th>Correo</th>
+                                                <th>Ciudad</th>
+                                                <th>PIN Activo/Inactivo</th>
+                                                <th>Fecha de Activacion de PIN</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -57,14 +57,14 @@
                                             if ($row) {
                                                 while ($info = pg_fetch_assoc($sql)) {
                                             echo '<tr>
-                                                <td>'.$info['id'].'</td>
-                                                <td>'.$info['nombre'].'</td>
-                                                <td>'.$info['fecha'].'</td>
-                                                <td>'.$info['linea'].'</td>
-                                                <td>'.$info['status_credito'].'</td>
-                                                <td>'.$info['banco'].'</td>
-                                                <td>$'.$info['valor_credito'].'</td>
-                                                <td><div class="label label-table label-danger">'.$info['estado_comision'].'</div></td>
+                                                <td>'.$info['usuario'].'</td>
+                                                <td>'.$info['nombre'].' '.$info['apellido'].'</td>
+                                                <td>'.$info['cedula'].'</td>
+                                                <td>'.$info['telefono'].'</td>
+                                                <td>'.$info['correo'].'</td>
+                                                <td>'.$info['pais'].'</td>
+                                                <td>'.$info['statu_pin'].'</td>
+                                                <td>'.$info['fecha_pin'].'</td>
                                             </tr>';
                                              }
                                                }else{

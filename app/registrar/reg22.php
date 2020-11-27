@@ -16,12 +16,15 @@
 	$fecha = date ("Y-m-d");
 	$idrefpadre = $_POST['idrefpadre'];
 	$statuspin = 'inactivo';
+	$cedula = $_POST['cedula'];
+	$bancos = $_POST['bancos'];
+	$fecha_nac = $_POST['fecha_nac'];
 
 	
   
 	
-	$sql = pg_query("INSERT INTO usuarios(usuario,password,rol,patrocinador,nombre,apellido,telefono,pais,correo,fecha,estado_comision,id_refer_padre,statu_pin) 
-		VALUES ('$usuario','$pass','$rol','$patrocinador','$nombre','$apellido','$tel','$pais','$correo','$fecha','$estado_com','$idrefpadre','$statuspin')");
+	$sql = pg_query("INSERT INTO usuarios(usuario,password,rol,patrocinador,nombre,apellido,telefono,pais,correo,fecha,estado_comision,banco,id_refer_padre,statu_pin,cedula,fecha_nac) 
+		VALUES ('$usuario','$pass','$rol','$patrocinador','$nombre','$apellido','$tel','$pais','$correo','$fecha','$estado_com','$bancos','$idrefpadre','$statuspin','$cedula','$fecha_nac')");
 
 
 

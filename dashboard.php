@@ -56,6 +56,18 @@
                 $file = 'promociones/nuevapromocion.php';   
             }elseif ($_GET['page'] == 'verpromo') {
                 $file = 'promociones/ver_promo.php';   
+            }elseif ($_GET['page'] == 'hipo') {
+                $file = 'clientes/hipotecario.php';   
+            }elseif ($_GET['page'] == 'consumo') {
+                $file = 'clientes/consumo.php';   
+            }elseif ($_GET['page'] == 'reduccion') {
+                $file = 'clientes/reduccion.php';   
+            }elseif ($_GET['page'] == 'ver_clientes') {
+                $file = 'clientes/ver_clientes.php';   
+            }elseif ($_GET['page'] == 'RED') {
+                $file = 'registrar/RED.php';   
+            }elseif ($_GET['page'] == 'all_clientes') {
+                $file = 'clientes/all_clientes.php';   
             }
         }else{
             $file = 'inicio.php';  
@@ -272,9 +284,18 @@ a.link {
                         <div>
                             <img src="assets/images/users/2.png" alt="user-img" class="img-circle">
                         </div>
-                        <div class="dropdown">
+                        <?php  
+                                  if ($_SESSION['rol'] == 'admin') {
+                                     echo '<a href="javascript:void(0)" class=" u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false">'.$_SESSION['nombre'].'
+                                <span class="caret"></span>
+                            </a>';
+                                         } ?>
+                         <?php  
+                                  if ($_SESSION['rol'] != 'admin') {
+                                     echo '<div class="dropdown">
                             <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false"><?php  echo ucfirst($_SESSION['nombre']);?>
+                                aria-expanded="false">'.$_SESSION['nombre'].'
                                 <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu animated flipInY">
@@ -296,14 +317,24 @@ a.link {
                                 
                                 <!-- text-->
                             </div>
-                        </div>
+                        </div>';
+                                         } ?>
                     </div>
                 </div>
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
+
+                        <?php  
+                                  if ($_SESSION['rol'] == 'admin') {
+                                     echo '<li class="nav-small-cap">--- ADMINISTRAR</li> ';
+                                         }
+                                 ?>
                         
-                        <li class="nav-small-cap">--- APP</li>
+                         <?php  
+                                  if ($_SESSION['rol'] != 'admin') {
+                                     echo '<li class="nav-small-cap">--- APP</li>';
+                                         } ?>
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                 <i class="icon-user"></i>
@@ -338,45 +369,98 @@ a.link {
                                          }
                                  ?>
                                  <?php  
+                                  if ($_SESSION['rol'] == 'admin') {
+                                     echo '
+                      <li>
+                            <a class="waves-effect waves-dark" href="?page=all_clientes" aria-expanded="false">
+                               <i class="icon-user-following"></i>
+                                <span class="hide-menu">Clientes</span>
+                            </a>
+                        </li>';
+                                         }
+                                 ?>
+                                 <?php  
+                                  if ($_SESSION['rol'] == 'admin') {
+                                     echo '
+                      <li>
+                            <a class="waves-effect waves-dark" href="#r" aria-expanded="false">
+                               <i class="icon-wallet"></i>
+                                <span class="hide-menu">Comisiones</span>
+                            </a>
+                        </li>';
+                                         }
+                                 ?>
+                                 <?php  
                                   if ($_SESSION['rol'] != 'admin') {
                                      echo '
                       <li>
                             <a class="waves-effect waves-dark" href="?page=referx3" aria-expanded="false">
                                <i class="icon-people"></i>
-                                <span class="hide-menu">Red de referidos</span>
+                                <span class="hide-menu">Mi equipo refer</span>
                             </a>
                         </li>';
                                          }
                                  ?>
-                      
-                       
-                        <li class="nav-small-cap">--- REFERIDOS (UNILEVEL)</li>
+                       <?php  
+                                  if ($_SESSION['rol'] != 'admin') {
+                                     echo '
+                      <li>
+                            <a class="waves-effect waves-dark" href="?page=RED" aria-expanded="false">
+                               <i class="icon-layers"></i>
+                                <span class="hide-menu">Mi RED</span>
+                            </a>
+                        </li>';
+                                         }
+                                 ?>
+                         <?php  
+                                  if ($_SESSION['rol'] != 'admin') {
+                                     echo '
+                        <li class="nav-small-cap">--- CRM (CLIENTES)</li>
                           <li>
                             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                                <i class="icon-layers"></i>
-                                <span class="hide-menu">Unilevel</span>
+                                <i class="icon-plus"></i>
+                                <span class="hide-menu">Crear cliente</span>
                             </a>
                              <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="#">Status clientes</a>
+                                    <a href="?page=hipo">Hipotecario</a>
                                 </li>
                                 <li>
-                                    <a href="#">Mi red</a>
+                                    <a href="?page=consumo">Consumo</a>
                                 </li>
                                 <li>
-                                    <a href="#">Comisiones</a>
+                                    <a href="?page=reduccion">Reduccion</a>
                                 </li>
                               
                             </ul>
                         </li>
                          <li>
+                            <a class="waves-effect waves-dark" href="?page=ver_clientes" aria-expanded="false">
+                               <i class="icon-eye"></i>
+                                <span class="hide-menu">Ver mis clientes</span>
+                            </a>
+                        </li>
+                         <li>
+                            <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                               <i class="icon-note"></i>
+                                <span class="hide-menu">Editar</span>
+                            </a>
+                        </li>
+                        ';
+                                         }
+                                 ?>
+                                 <?php  
+                                  if ($_SESSION['rol'] != 'admin') {
+                                     echo '
+                          <li class="nav-small-cap">--- OPCIONES</li>
+                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                 <i class="icon-wallet"></i>
-                                <span class="hide-menu">Creditos</span>
+                                <span class="hide-menu">Comisiones</span>
                             </a>
                              <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="#">Nuevo Credito</a>
+                                    <a href="#">Administrar</a>
                                 </li>
                                
                               
@@ -389,19 +473,16 @@ a.link {
                             </a>
                              <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="#">Videos</a>
+                                    <a href="#">Ver Videos</a>
                                 </li>
                                
                               
                             </ul>
-                        </li>
+                        </li>';
+                                         }
+                                 ?>
 
-                         <li>
-                            <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                               <i class="icon-tag"></i>
-                                <span class="hide-menu">Promociones</span>
-                            </a>
-                        </li>
+                      
                        
                         
                         <?php  
@@ -421,10 +502,37 @@ a.link {
                                     <a href="?page=verpromo">Ver incentivos</a>
                                 </li>
                             </ul>
-                        </li>';
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                <i class="icon-graduation"></i>
+                                <span class="hide-menu">Aula</span>
+                            </a>
+                             <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="#">Subir Videos</a>
+                                </li>
+                                <li>
+                                    <a href="#">Ver Videos</a>
+                                </li>
+                               
+                              
+                            </ul>
+                        </li>
+                        ';
                                          }
                                  ?>
-                    
+                                 <?php  
+                                  if ($_SESSION['rol'] == 'admin') {
+                                     echo '
+                         <li>
+                            <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                                <i class="icon-bubble"></i>
+                                <span class="hide-menu">Notificaciones</span>
+                            </a>
+                        </li> ';
+                                         }
+                                 ?>
                         <li>
                             <a class="waves-effect waves-dark" href="login/logout.php" aria-expanded="false">
                                 <i class="icon-logout"></i>

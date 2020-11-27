@@ -10,6 +10,14 @@
     
     
 ?>
+<style type="text/css">
+
+ .ocultarref{
+     display: none !important;
+ }
+
+
+</style>
   <div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
@@ -37,7 +45,7 @@
                         
                          <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Mis Referidos</h4>
+                                <h4 class="card-title">Primer Nivel refer</h4>
                                 <h6 class="card-subtitle">Estos son mis referidos</h6>
                                
                               
@@ -45,14 +53,12 @@
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
-                                                <th>Codigo</th>
+                                                <th>Usuario</th>
                                                 <th>Nombre</th>
-                                                <th>Creado el</th>
-                                                <th>Linea</th>
-                                                <th>Status</th>
-                                                <th>Banco</th>
-                                                <th>Valor</th>
-                                                <th>Estado comision</th>
+                                                <th>Telefono</th>
+                                                <th>Correo</th>
+                                                <th>PIN Activo/Inactivo</th>
+                                              
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -60,14 +66,11 @@
                                             if ($row) {
                                                 while ($info = pg_fetch_assoc($sql)) {
                                             echo '<tr>
-                                                <td>'.$info['id'].'</td>
+                                                <td>'.$info['usuario'].'</td>
                                                 <td>'.$info['nombre'].'</td>
-                                                <td>'.$info['fecha'].'</td>
-                                                <td>'.$info['linea'].'</td>
-                                                <td>'.$info['status_credito'].'</td>
-                                                <td>'.$info['banco'].'</td>
-                                                <td>$'.$info['valor_credito'].'</td>
-                                                <td><div class="label label-table label-danger">'.$info['estado_comision'].'</div></td>
+                                                <td>'.$info['telefono'].'</td>
+                                                <td>'.$info['correo'].'</td>
+                                                <td><div class="label label-table label-danger">'.$info['statu_pin'].'</div></td>
                                             </tr>';
                                              }
                                                }else{
@@ -89,9 +92,9 @@
                         
                          <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Referidos de mis referidos</h4>
+                                <h4 class="card-title">Segundo Nivel Refer</h4>
                                 <h6 class="card-subtitle">Estos son mis referidos</h6>
-                              
+                                    
                                       <?php
                                             $sqllv2 = pg_query("SELECT * FROM usuarios where id_refer_padre = '$id'");
                                             $rowlv2 = pg_num_rows($sqllv2);
@@ -101,38 +104,44 @@
 
                                                      $sqllv3 = pg_query("SELECT * FROM usuarios where id_refer_padre = '$idlv2'");
                                                      $rowlv3 = pg_num_rows($sqllv3);
-                                                     $infolv3 = pg_fetch_assoc($sqllv3);
-                                                    
-                                                   
-                                                           echo '
-                                                    <h4 class="card-title">'.$infolv2['nombre'].' '.$infolv2['apellido'].'</h4>
-                                                      <div class="table-responsive m-t-40">
-                                    <table  class="table table-bordered table-striped">
-                                        <thead>
-                                        <tr>
-                                                <th>Codigo</th>
+                                                     if ($rowlv3) {
+                                                         $ocultarref = '';
+                                                     }else{
+                                                        $ocultarref = 'ocultarref';
+                                                     }
+                                                     
+                                                     echo'
+                                                    <h4 class="card-title '.$ocultarref.'">'.$infolv2['nombre'].' '.$infolv2['apellido'].'</h4>
+                                                    <div class="table-responsive m-t-40">
+                                        <table  class="table table-bordered table-striped">
+                                                      
+                                           
+                                           <thead>
+                                             <tr class="'.$ocultarref.'">
+                                              
+                                                <th>Usuario</th>
                                                 <th>Nombre</th>
-                                                <th>Creado el</th>
-                                                <th>Linea</th>
-                                                <th>Status</th>
-                                                <th>Banco</th>
-                                                <th>Valor</th>
-                                                <th>Estado comision</th>
+                                                <th>Telefono</th>
+                                                <th>Correo</th>
+                                                <th>PIN Activo/Inactivo</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                           <tr>
-                                                <td>'.$infolv3['id'].'</td>
+                                       <tbody>';
+
+                                           if ($rowlv3) {
+                                               while ($infolv3 = pg_fetch_assoc($sqllv3)) {
+                                               echo '  
+                                               <tr>
+                                                <td>'.$infolv3['usuario'].'</td>
                                                 <td>'.$infolv3['nombre'].'</td>
-                                                <td>'.$infolv3['fecha'].'</td>
-                                                <td>'.$infolv3['linea'].'</td>
-                                                <td>'.$infolv3['id'].'</td>
-                                                <td>'.$infolv3['id'].'</td>
-                                                <td>'.$infolv3['id'].'</td>
-                                                <td>'.$infolv3['id'].'</td>
-                                            </tr>
+                                                <td>'.$infolv3['telefono'].'</td>
+                                                <td>'.$infolv3['correo'].'</td>
+                                                <td><div class="label label-table label-danger">'.$infolv3['statu_pin'].'</div></td>   
+                                               </tr>';
+                                              }
+                                              }
                                             
-                                        </tbody>
+                                         echo' </tbody>
                                     </table>
                                 </div>';
                                                

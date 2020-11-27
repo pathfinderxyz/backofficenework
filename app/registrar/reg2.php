@@ -36,7 +36,7 @@
                              <?php
                                  if ($_GET["errorusuario"]=="si"){
                              ?>
-                                 <div class="alert"><strong style="color: #ffffff;background-color: #B71C1C;padding: 8px;border-radius: 3px;"> ¡El correo ya esta siendo usado por otra persona!</strong></div>
+                                 <div class="alert"><strong style="color: #ffffff;background-color: #B71C1C;padding: 8px;border-radius: 3px;"> ¡Error al crear usuario!</strong></div>
                            <?php  
                                }elseif ($_GET["registro"]=="exitoso") {
                                 ?>
@@ -67,6 +67,9 @@
                                         </div>
                                         <h5 class="card-subtitle"> Datos Personales</h5>
                                         <div class="form-group">
+                                         <input type="text" class="form-control" name="cedula" id="Cedula" placeholder="Cedula" required="">
+                                        </div>
+                                        <div class="form-group">
                                          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required="">
                                         </div>
                                         <div class="form-group">
@@ -76,11 +79,32 @@
                                         <div class="form-group">
                                             <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" required="">
                                         </div>
+
                                         <div class="form-group">
                                          <input type="tel" class="form-control" name="tel" id="tel" placeholder="Telefono" required="">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="pais" id="pais" placeholder="Pais" required="">
+                                        </div>
+                                         <div class="form-group">
+                                            <label>  Fecha de Nacimiento</label>
+                                            <input type="date" class="form-control" name="fecha_nac" id="fecha_nac" placeholder="Fecha de Nacimiento" required="">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                        <label for="rol">Bancos</label>
+                                        <select  class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="bancos" id="bancos" required="">
+                                                
+                                               <option value=""></option>
+                                               <option value="ITAU">ITAU</option>
+                                               <option value="COLPATRIA">COLPATRIA</option>
+                                               <option value="BANCO CAJA SOCIAL">BANCO CAJA SOCIAL</option>
+                                               <option value="BANCO POPULAR">BANCO POPULAR</option>
+                                               <option value="BANCO AV VILLAS">BANCO AV VILLAS</option>
+                                               <option value="BANCO BBVA">BANCO BBVA</option>
+                                               <option value="BANCO DE OCCIDENTE">BANCO DE OCCIDENTE</option>
+                                               <option value="CREDIFAMILIA">CREDIFAMILIA</option>
+                                        </select>
                                         </div>
                                        
                                         <h5 class="card-subtitle">Informacion de Pago</h5>
