@@ -24,8 +24,8 @@
 
 
 	
-	$sql = pg_query("INSERT INTO clientes(nombre_apellido,telefono,linea_credito,actividad,ingresos,antiguedad,edad,centrales_riesgo,entidad,plazo_credito,cuota_anual,saldo_capital,observaciones,tipo_cliente,id_ref_padre) 
-		VALUES ('$nombre_apellido','$tel','$linea_credito','$actividad','$ingresos','$antiguedad','$edad','$centrales_riesgo','$entidad','$plazo_credito','$num_cuota','$saldo_capital','$observaciones','$tipo_cliente','$irp')");
+	$sql = pg_query("INSERT INTO clientes(nombre_apellido,telefono,linea_credito,actividad,ingresos,antiguedad,edad,centrales_riesgo,entidad,plazo_credito,cuota_anual,saldo_capital,observaciones,tipo_cliente,id_ref_padre,fecha_creacion) 
+		VALUES ('$nombre_apellido','$tel','$linea_credito','$actividad','$ingresos','$antiguedad','$edad','$centrales_riesgo','$entidad','$plazo_credito','$num_cuota','$saldo_capital','$observaciones','$tipo_cliente','$irp','$fecha')");
 
 
 

@@ -34,6 +34,13 @@
      $imagen2 = $infopromo2['url_imagen'];
 
 
+     $cuenta_refer = pg_query("SELECT (id) from  usuarios where id_refer_padre='$idstatus'");
+     $rowcuentarefer = pg_num_rows($cuenta_refer);
+
+     $cuenta_clientes = pg_query("SELECT (id_cliente) from  clientes where id_ref_padre='$idstatus'");
+     $rowcuentaclientes = pg_num_rows($cuenta_clientes);
+     
+
 
 ?>
   <div class="container-fluid">
@@ -69,34 +76,35 @@
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Nuevo Referidos</h5>
+                                        <h5 class="card-title">Referidos</h5>
                                         <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                             <span class="display-5 text-info"><i class="icon-people"></i></span>
-                                            <a href="javscript:void(0)" class="link display-5 ml-auto">23</a>
+                                             <a href="javscript:void(0)" class="link display-5 ml-auto" style="color: #000 !important;"><?php  echo $rowcuentarefer;?></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- column -->
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Mi Red</h5>
+                          <div class="col-md-6">
+                               <div class="card">
+                               <a href="?page=RED">   <div class="card-body">
+                                        <h5 class="card-title">Mi RED</h5>
                                         <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
-                                            <span class="display-5 text-purple"><i class="icon-folder"></i></span>
-                                            <a href="javscript:void(0)" class="link display-5 ml-auto">169</a>
+                                            <span class="display-5 text-info"><i class="icon-layers"></i></span>
+                                            <a href="javscript:void(0)" class="link display-5 ml-auto" style="color: #000 !important;"></a>
                                         </div>
                                     </div>
-                                </div>
+                                    </a>
+                                    </div>
                             </div>
                             <!-- column -->
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Archivos</h5>
+                                        <h5 class="card-title">Clientes</h5>
                                         <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
-                                            <span class="display-5 text-primary"><i class="icon-folder-alt"></i></span>
-                                            <a href="javscript:void(0)" class="link display-5 ml-auto">311</a>
+                                            <span class="display-5 text-primary"><i class="icon-user-following"></i></span>
+                                             <a href="javscript:void(0)" class="link display-5 ml-auto" style="color: #000 !important;"><?php  echo $rowcuentaclientes;?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -104,13 +112,15 @@
                             <!-- column -->
                             <div class="col-md-6">
                                 <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Creditos</h5>
+                                    <a href="?page=comclientes">  <div class="card-body">
+                                        <h5 class="card-title">Comisiones</h5>
                                         <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                             <span class="display-5 text-success"><i class="icon-wallet"></i></span>
-                                            <a href="javscript:void(0)" class="link display-5 ml-auto">1</a>
+                                             <a href="javscript:void(0)" class="link display-5 ml-auto" style="color: #000 !important;"></a>
+                                            
                                         </div>
                                     </div>
+                                     </a>
                                 </div>
                             </div>
                             <!-- column -->
@@ -142,6 +152,7 @@
                                 </div>
                                 <!-- Card -->
                             </div>
+                            
                 </div>
                 <!-- ============================================================== -->
                

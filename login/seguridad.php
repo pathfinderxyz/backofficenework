@@ -1,5 +1,5 @@
 <?php
-include ("../Errores/mostrar_errores.php");
+//include ("../Errores/mostrar_errores.php");
 //Inicio la sesión
 session_start();
 //COMPRUEBA QUE EL USUARIO ESTA AUTENTICADO

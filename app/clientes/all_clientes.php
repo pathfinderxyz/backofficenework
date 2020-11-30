@@ -31,14 +31,17 @@
                                     <table id="myTable3" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
-                                                <th>Tipo</th>
-                                                <th>Nombre y Apellido</th>
-                                                <th>Telefono</th>
-                                                <th>Actividad</th>
-                                                <th>Ingresos</th>
+                                                <th>Opciones</th>
+                                                <th>codigo</th>
+                                                <th>Fecha de creacion</th>
+                                                <th>Usuario</th>
                                                 <th>Linea de credito</th>
-                                                <th>Plazo de credito</th>
-                                                <th>cuota Anual</th>
+                                                <th>status</th>
+                                                <th>Banco</th>
+                                                <th>Valor del credito</th>
+                                                <th>Codigo del REF</th>
+                                                
+                                             
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -46,14 +49,26 @@
                                             if ($row) {
                                                 while ($info = pg_fetch_assoc($sql)) {
                                             echo '<tr>
-                                                <td>'.$info['tipo_cliente'].'</td>
-                                                <td>'.$info['nombre_apellido'].' '.$info['apellido'].'</td>
-                                                <td>'.$info['telefono'].'</td>
-                                                <td>'.$info['actividad'].'</td>
-                                                <td>'.$info['ingresos'].'</td>
+                                                <td> <div class="btn-group">
+                                                     <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      <i class="ti-settings"></i>
+                                                     </button>
+                                                     <div class="dropdown-menu animated flipInX">
+                                                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"  aria-haspopup="true" onClick="cmodalpeso ('.$info['id'].')" >Actualizar datos </a>
+                                                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"  aria-haspopup="true" onClick="cargamodal ('.$info['id'].')" >Cambiar Status </a>
+                                                        
+                                                   
+                                                    </div>
+                                                    </div></td>
+                                                <td>'.$info['id_cliente'].'</td>
+                                                <td>'.$info['fecha_creacion'].'</td>
+                                                <td>'.$info['nombre_apellido'].'</td>
                                                 <td>'.$info['linea_credito'].'</td>
-                                                <td>'.$info['plazo_credito'].'</td>
-                                                <td>'.$info['cuota_anual'].'</td>
+                                                <td>'.$info['status'].'</td>
+                                                <td>'.$info['entidad'].'</td>
+                                                <td>'.$info['valor'].'</td>
+                                                <td>'.$info['id_ref_padre'].'</td>
+                                                
                                             </tr>';
                                              }
                                                }else{

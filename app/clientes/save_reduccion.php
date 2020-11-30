@@ -23,8 +23,8 @@
 
 
 	
-	$sql = pg_query("INSERT INTO clientes(nombre_apellido,telefono,actividad,ingresos,entidad,plazo_credito,cuota_anual,saldo_capital,observaciones,tipo_cliente,id_ref_padre) 
-		VALUES ('$nombre_apellido','$tel','$actividad','$ingresos','$entidad','$plazo_credito','$num_cuota','$saldo_capital','$observaciones','$tipo_cliente','$irp')");
+	$sql = pg_query("INSERT INTO clientes(nombre_apellido,telefono,actividad,ingresos,entidad,plazo_credito,cuota_anual,saldo_capital,observaciones,tipo_cliente,id_ref_padre,fecha_creacion) 
+		VALUES ('$nombre_apellido','$tel','$actividad','$ingresos','$entidad','$plazo_credito','$num_cuota','$saldo_capital','$observaciones','$tipo_cliente','$irp','$fecha')");
 
 
 

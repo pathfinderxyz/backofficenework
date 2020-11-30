@@ -6,6 +6,9 @@
     error_reporting(0);
     $id=$_GET['id'];    
     $date= date ("Y-m-d");
+
+    $cuenta_refer_dash = pg_query("SELECT (id) from  usuarios where id_refer_padre='$id'");
+    $rcuentaref = pg_num_rows($cuenta_refer_dash);
     
 
     $sql = pg_query("select * from usuarios where id='$id'");
@@ -26,6 +29,12 @@
         $_SESSION['statu_pin']=$info['statu_pin'];
         
     }
+
+    $cuenta_refer_dash = pg_query("SELECT (id) from  usuarios where id_refer_padre='".$_SESSION['id']."'");
+    $rcuentaref = pg_num_rows($cuenta_refer_dash);
+    $cuenta_clientes2 = pg_query("SELECT (id_cliente) from  clientes where id_ref_padre='".$_SESSION['id']."'");
+    $rowcuentaclientes2 = pg_num_rows($cuenta_clientes2);
+     
     
     $file = "";//Vista a cargar
     $m_menu = "";
@@ -68,6 +77,18 @@
                 $file = 'registrar/RED.php';   
             }elseif ($_GET['page'] == 'all_clientes') {
                 $file = 'clientes/all_clientes.php';   
+            }elseif ($_GET['page'] == 'mpagos') {
+                $file = 'comisiones/met_pagos.php';   
+            }elseif ($_GET['page'] == 'comclientes') {
+                $file = 'comisiones/com_clientes.php';   
+            }elseif ($_GET['page'] == 'todascomi') {
+                $file = 'comisiones/todas_comi.php';   
+            }elseif ($_GET['page'] == 'hist_comi') {
+                $file = 'comisiones/historial_comi.php';   
+            }elseif ($_GET['page'] == 'videos') {
+                $file = 'aula/videos.php';   
+            }elseif ($_GET['page'] == 'subir_video') {
+                $file = 'aula/subir_video.php';   
             }
         }else{
             $file = 'inicio.php';  
@@ -339,7 +360,7 @@ a.link {
                             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                 <i class="icon-user"></i>
                                 <span class="hide-menu">Referidos
-                                    <span class="badge badge-pill badge-warning ml-auto">4</span>
+                                    <span class="badge badge-pill badge-warning ml-auto"><?php  echo $rcuentaref;?></span>
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -383,7 +404,7 @@ a.link {
                                   if ($_SESSION['rol'] == 'admin') {
                                      echo '
                       <li>
-                            <a class="waves-effect waves-dark" href="#r" aria-expanded="false">
+                            <a class="waves-effect waves-dark" href="?page=todascomi" aria-expanded="false">
                                <i class="icon-wallet"></i>
                                 <span class="hide-menu">Comisiones</span>
                             </a>
@@ -437,15 +458,12 @@ a.link {
                          <li>
                             <a class="waves-effect waves-dark" href="?page=ver_clientes" aria-expanded="false">
                                <i class="icon-eye"></i>
-                                <span class="hide-menu">Ver mis clientes</span>
+                                <span class="hide-menu">Ver mis clientes
+                                 <span class="badge badge-pill badge-warning ml-auto"> '.$rowcuentaclientes2.'</span></span>
                             </a>
                         </li>
-                         <li>
-                            <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                               <i class="icon-note"></i>
-                                <span class="hide-menu">Editar</span>
-                            </a>
-                        </li>
+                       
+                        
                         ';
                                          }
                                  ?>
@@ -459,8 +477,14 @@ a.link {
                                 <span class="hide-menu">Comisiones</span>
                             </a>
                              <ul aria-expanded="false" class="collapse">
+                                 <li>
+                                    <a href="?page=mpagos">Metodo de pago</a>
+                                </li>
                                 <li>
-                                    <a href="#">Administrar</a>
+                                    <a href="?page=comclientes">Comisiones clientes </a>
+                                </li>
+                                <li>
+                                    <a href="?page=hist_comi">Historial</a>
                                 </li>
                                
                               
@@ -473,7 +497,7 @@ a.link {
                             </a>
                              <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="#">Ver Videos</a>
+                                    <a href="?page=videos">Ver Videos</a>
                                 </li>
                                
                               
@@ -510,10 +534,10 @@ a.link {
                             </a>
                              <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="#">Subir Videos</a>
+                                    <a href="?page=subir_video">Subir Videos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Ver Videos</a>
+                                    <a href="?page=videos">Ver Videos</a>
                                 </li>
                                
                               
