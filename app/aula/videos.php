@@ -35,6 +35,8 @@
                              $titulovideo = ''.$info['titulo'].'';    
                             if ($titulovideo == '') {
                                 $ocultar = 'ocultar';
+                                }else{
+                                  $ocultar = '';
                                 }
                         echo '
                     <div class="col-lg-4 '.$ocultar.'">
